@@ -1,21 +1,33 @@
-MIT License
+SENTINEL End-User License Agreement
 
-Copyright (c) 2025 theorem
+Version 1.0
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Effective Date: 10th January 2025
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+This Software License Agreement ("Agreement") is a legal agreement between you (either an individual or a single entity) ("Licensee") and the creator of the software, referred to herein as "SENTINEL" ("Licensor"). By installing or using SENTINEL and its affiliated subsystems ("Software"), you agree to the terms and conditions of this Agreement.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+1. Grant of License
+The Licensor hereby grants the Licensee a non-exclusive, non-transferable, worldwide license to use the Software for both personal and commercial purposes. This includes the right to install, run, and utilize the Software on any compatible device.
+
+2. Restrictions
+Modification: Licensee may not modify, reverse engineer, decompile, disassemble, or otherwise alter the source code or functionality of the Software in any way, in accordance with Digital Millennium Copyright Act (DMCA) provisions.
+
+Redistribution: Licensee is not permitted to redistribute, sublicense, or sell the Software or its source code in whole or in part without express written permission from the Licensor.
+
+Usage Restrictions: Licensee shall not use the Software in any manner that violates applicable laws, regulations, or third-party rights, including the provisions of the Uniform Commercial Code (UCC) governing software as goods.
+
+3. No Warranty
+The Software is provided "as-is," without warranty of any kind, express or implied, including but not limited to warranties of merchantability or fitness for a particular purpose. The Licensor does not warrant that the Software will meet the Licensee's requirements or that its operation will be uninterrupted or error-free.
+
+4. Limitation of Liability
+In no event shall the Licensor be liable for any direct, indirect, incidental, special, consequential, or punitive damages arising out of or in connection with the use or inability to use the Software, including but not limited to damages for data loss, even if the Licensor has been advised of the possibility of such damages.
+
+5. Termination
+This Agreement will remain in effect until terminated. Licensee may terminate the Agreement at any time by uninstalling the Software. The Licensor may terminate this Agreement if the Licensee breaches any of its terms. Upon termination, Licensee must immediately cease all use of the Software and delete all copies in their possession.
+
+6. Miscellaneous
+This Agreement constitutes the entire understanding between the parties regarding the Software and supersedes all prior agreements or communications.
+If any provision of this Agreement is held to be invalid or unenforceable, the remaining provisions shall remain in full force and effect.
+This Agreement is governed by the laws of the United States, specifically U.S. Copyright Law (Title 17), the Uniform Commercial Code (UCC), and the Digital Millennium Copyright Act (DMCA), as applicable.
+Any dispute arising under this Agreement shall be resolved under the legal framework of U.S. Contract Law and may be adjudicated in the jurisdiction where the Licensor is located.
+By installing or using the Software, you acknowledge that you have read, understood, and agreed to the terms and conditions of this Agreement.
