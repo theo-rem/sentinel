@@ -3,6 +3,8 @@ A suite of programs created to combat child sexual abuse media (CSAM) on the int
 
 This is the current structure of the SENTINEL ecosystem, as of 13/1/2025:
 
+**SENTINEL**: A Nous-Hermes based, Azure Cloud Services-powered, 280 million parameter MoRA specializing in developing anti-CSAM measures, analyst coordination, and target analysis. Closed source, controlled access.
+
 **Core**: Serves as the primary execution hub, facilitating the launch of all associated scripts and enabling seamless interaction with the underlying database.
 
 ~~**Hasher**: Generates cryptographic hashes (MD5) of images to facilitate their unique identification and verification.~~
