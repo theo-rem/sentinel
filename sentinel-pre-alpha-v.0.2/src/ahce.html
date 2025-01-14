@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENTINEL Advanced Hashing Capabilities Environment</title>
+    <script type="text/javascript" src="/eel.js"></script>
+    <style>
+        body {
+            background: rgb(230,230,230);
+            background: radial-gradient(circle, rgba(230,230,230,0.8715861344537815) 62%, rgba(155,175,255,1) 76%, rgba(0,8,82,0.6530987394957983) 94%);
+            color: black;
+            font-family: 'Helvetica', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #logo {
+            margin-bottom: 10px;
+            width: 80px;
+            height: auto;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            width: 400px;
+            max-width: 90%;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .row {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .button {
+            background-color: black;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            opacity: 0.8;
+            width: 150px;
+            margin: 1px auto;
+            text-align: center;
+        }
+
+        .button:hover {
+            background-color: #333333;
+        }
+
+        .label {
+            font-size: 20px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .confirmation {
+            color: green;
+            font-size: 16px;
+            margin-top: 5px;
+            white-space: nowrap;
+        }
+
+        .warning {
+            color: #FF8C00;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 5px;
+            white-space: nowrap;
+        }
+
+        .exception {
+            color: red;
+            font-size: 16px;
+            margin-top: 5px;
+            white-space: nowrap;
+        }
+
+        .checkbox-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            text-align: center;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .exit-button-container {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            max-width: 90%;
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 15px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .warning-container {
+            margin: 5px 0 40px 0;
+            min-height: 60px;
+            text-align: center;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            width: 100%;
+        }
+
+        .browse-button {
+            width: 150px;
+            margin-top: 12px;
+        }
+
+        .progress-container {
+            width: 100%;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+            width: 0%;
+            transition: width 0.5s ease-in-out;
+            border-radius: 10px;
+        }
+
+        .progress-text {
+            margin-top: 10px;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .progress-percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #000;
+            font-weight: bold;
+            text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <img id="logo" src="logo.png" alt="SENTINEL Logo">
+    <h1>SENTINEL Advanced Hashing Capabilities Environment</h1>
+
+    <div class="container">
+        <div class="input-group">
+            <label for="target-folder" class="label">Target Directory:</label>
+            <input type="text" id="target-folder" readonly>
+            <button class="button browse-button" onclick="selectTargetFolder()">Browse</button>
+        </div>
+
+        <div class="input-group">
+            <label for="compare-folder" class="label">Compare Directory:</label>
+            <input type="text" id="compare-folder" readonly>
+            <button class="button browse-button" onclick="selectCompareFolder()">Browse</button>
+        </div>
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="use-mirror">
+            <label for="use-mirror">Use mirrored comparison</label>
+        </div>
+
+        <button class="button" onclick="startComparison()">Execute AHCE</button>
+        
+        <div class="progress-container" style="display: none;" id="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+                <div class="progress-percentage" id="progress-percentage">0%</div>
+            </div>
+            <div class="progress-text" id="progress-info"></div>
+        </div>
+
+        <div class="warning-container">
+            <span id="confirmation" class="confirmation"></span>
+            <span id="warning" class="warning"></span>
+            <span id="exceptionLabel" class="exception"></span>
+        </div>
+
+        <button class="button" onclick="exitProgram()">Exit</button>
+    </div>
+
+    <script type="text/javascript">
+        let progressTimer = null;
+
+        async function updateProgress() {
+            const progress = await eel.get_progress()();
+            
+            if (progress.status === "running") {
+                const progressContainer = document.getElementById('progress-container');
+                const progressFill = document.getElementById('progress-fill');
+                const progressPercentage = document.getElementById('progress-percentage');
+                const progressInfo = document.getElementById('progress-info');
+                
+                progressContainer.style.display = 'block';
+                const percent = (progress.progress * 100).toFixed(1);
+                const remaining = Math.ceil(progress.remaining_time);
+                const minutes = Math.floor(remaining / 60);
+                const seconds = remaining % 60;
+                
+                progressFill.style.width = `${percent}%`;
+                progressPercentage.textContent = `${percent}%`;
+                progressInfo.textContent = 
+                    `Processing: ${progress.completed}/${progress.total} ` +
+                    `(ETA: ${minutes}m ${seconds}s)`;
+
+                // If completed, stop the timer
+                if (progress.completed >= progress.total) {
+                    stopProgress();
+                }
+            }
+        }
+
+        async function selectTargetFolder() {
+            try {
+                const folder = await eel.browse_folder()();
+                if (folder) {
+                    document.getElementById('target-folder').value = folder;
+                    updateStatus('success', 'Target folder selected');
+                }
+            } catch (error) {
+                updateStatus('error', 'Error selecting target folder');
+                console.error(error);
+            }
+        }
+
+        async function selectCompareFolder() {
+            try {
+                const folder = await eel.browse_folder()();
+                if (folder) {
+                    document.getElementById('compare-folder').value = folder;
+                    updateStatus('success', 'Compare folder selected');
+                }
+            } catch (error) {
+                updateStatus('error', 'Error selecting compare folder');
+                console.error(error);
+            }
+        }
+
+        async function startComparison() {
+            try {
+                const targetFolder = document.getElementById('target-folder').value;
+                const compareFolder = document.getElementById('compare-folder').value;
+                const useMirror = document.getElementById('use-mirror').checked;
+
+                if (!targetFolder || !compareFolder) {
+                    updateStatus('error', "Please select both target and compare folders");
+                    return;
+                }
+
+                updateStatus('info', "Processing comparison...");
+                document.getElementById('progress-container').style.display = 'block';
+                progressTimer = setInterval(updateProgress, 250);  // 250ms update interval
+
+                eel.start_comparison(targetFolder, compareFolder, useMirror)(function(result) {
+                    console.log("Received result:", result);  // Debug log
+                    
+                    if (!result || !result.status) {
+                        updateStatus('error', "Invalid response from server");
+                        return;
+                    }
+
+                    switch(result.status) {
+                        case "M":
+                            if (result.matches && result.matches.length > 1) {
+                                updateStatus('success', `Potential matches found:\n${result.matches.join('\n')}`);
+                            } else if (result.matches && result.matches.length === 1) {
+                                updateStatus('success', `Potential match found: ${result.matches[0]}`);
+                            }
+                            break;
+                        case "K":
+                            if (result.matches && result.matches.length > 1) {
+                                updateStatus('warning', `Multiple high similarity matches detected!\n${result.matches.join('\n')}`);
+                            } else if (result.matches && result.matches.length === 1) {
+                                updateStatus('warning', `High similarity match detected!\n${result.matches[0]}`);
+                            }
+                            break;
+                        case "0":
+                            updateStatus('error', result.message || "No matches found");
+                            break;
+                    }
+                });
+            } catch (error) {
+                updateStatus('error', `System error: ${error.message}`);
+                console.error(error);  // Debug log
+            }
+        }
+
+        function stopProgress() {
+            if (progressTimer) {
+                clearInterval(progressTimer);
+                progressTimer = null;
+                document.getElementById('progress-container').style.display = 'none';
+            }
+        }
+
+        function updateStatus(type, message) {
+            try {
+                let confirmationLabel = document.getElementById('confirmation');
+                let warningLabel = document.getElementById('warning');
+                let exceptionLabel = document.getElementById('exceptionLabel');
+
+                if (!confirmationLabel || !warningLabel || !exceptionLabel) {
+                    console.error('Status elements not found');
+                    return;
+                }
+
+                confirmationLabel.textContent = '';
+                warningLabel.textContent = '';
+                exceptionLabel.textContent = '';
+
+                switch(type) {
+                    case 'success':
+                        confirmationLabel.textContent = `✔ ${message}`;
+                        break;
+                    case 'warning':
+                        warningLabel.textContent = `⚠ ${message}`;
+                        break;
+                    case 'error':
+                        exceptionLabel.textContent = `✗ ${message}`;
+                        break;
+                    case 'info':
+                        confirmationLabel.textContent = `ℹ ${message}`;
+                        break;
+                }
+            } catch (error) {
+                console.error('Error updating status:', error);
+            }
+        }
+
+        async function exitProgram() {
+            await eel.exit_program()();
+        }
+    </script>
+</body>
+</html>
