@@ -9,7 +9,7 @@ This is the current structure of the SENTINEL ecosystem, as of 13/1/2025:
 
 ~~**Hasher**: Generates cryptographic hashes (MD5) of images to facilitate their unique identification and verification.~~
 
-**Advanced Hashing Capabilities Environment (AHCE)**: Implements a variety of techniques, including procedural and geometric hashing, color histogram analysis, and (WIP) deep learning model trained on CSAM. Hasher merged into AHCE on 13/1/2025.
+**Advanced Hashing Capabilities Environment (AHCE)**: Implements a variety of techniques, including procedural and geometric hashing, color histogram analysis, facial recognition, and a (WIP) deep learning model trained on CSAM. Hasher merged into AHCE on 13/1/2025.
 
 ~~**Hash Query**: Accepts a user-provided hash, cross-references it with the database of processed hashes, and notifies the user of any matching results, enabling further action by the user.~~
 
