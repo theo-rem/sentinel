@@ -7,6 +7,6 @@ This is the current structure of the SENTINEL ecosystem, as of 13/1/2025:
 
 **Core**: Serves as the primary execution hub, facilitating the launch of all associated scripts and enabling seamless interaction with the underlying database.
 
-**Advanced Hashing Capabilities Environment (AHCE)**: Implements a variety of techniques, including procedural and geometric hashing, color histogram analysis, facial recognition, and a (WIP) deep learning model trained on CSAM. Hasher merged into AHCE on 13/1/2025.
+**Advanced Hashing Capabilities Environment (AHCE)**: Implements a variety of techniques, including procedural and geometric hashing, color histogram analysis, facial recognition, and a (WIP) deep learning model trained on CSAM. 
 
 **Case Sync**: Enables collaboration between multiple instances of SENTINEL running on different machines, ensuring smooth data synchronization and sharing across systems.
