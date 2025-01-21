@@ -14,9 +14,12 @@ This is the current structure of the SENTINEL ecosystem, as of 13/1/2025:
 ## How it works
 ### SENTINEL
 **SENTINEL** was trained on publicly available information, including (but not limited to) documents relating to the procedures and algorithms used in CSAM identification, court documents detailing the persecution of CSAM production and distribution (primarily within the United States), as well as studies and statistics from NCMEC, IWF, Thorn Research et cetera. 
+
 Inference and training was conducted on 8x A100-powered compute platforms and completed after 122 hours (horribly slow and expensive, but necessary).
 SENTINEL also has access to the real-time Internet as part of its web crawler mechanism (WIP).
+
 Through inspection of SENTINEL's thought logic, we noticed its initiative to develop, improve and deploy AHCE autonomously. However, since SENTINEL does not specialize in any of the programming languages AHCE is written in, this behavior is currently discouraged. The reason for this is that, as of right now, many of the features we seek to implement cannot function in a stable enough manner so as to make it viable for production code. 
+
 SENTINEL's model, MoRA and memories are stored on Azure Storage Accounts and currently occupy 780GB of storage space.
 
 SENTINEL's current uses are:
