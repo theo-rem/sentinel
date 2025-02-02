@@ -51,6 +51,8 @@ SENTINEL is powered by the following Azure services:
 In development.
 
 ### Advanced Hashing Capabilities Environment (AHCE)
+In its first iteration, AHCE is no more than an image similarity detection algorithm (rather, a collection of algorithms). In order to deploy AHCE in the field, a database must first be available, and we are rapidly working on collecting a sufficient amount of data that would allow for a pre-alpha deployment of AHCE. 
+
 AHCE implements several image similarity detection algorithms.
 
 - Fourier Transform: This algorithm transforms an image into its constituent frequencies, enabling the detection of patterns and features that might not be visible to the human eye. By analyzing these frequencies, AHCE can identify similarities and differences between images more effectively.
