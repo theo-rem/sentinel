@@ -1,7 +1,7 @@
 # SENTINEL
 A suite of programs created to combat child sexual abuse media (CSAM) on the internet.
 
-This is the current structure of the SENTINEL ecosystem, as of 2/2/2025:
+This is the current structure of the SENTINEL ecosystem, as of 8/3/2025:
 
 **SENTINEL**: A Nous-Hermes based, Microsoft Azure-powered, 280 million parameter MoRA specializing in developing anti-CSAM measures, analyst coordination, and target analysis. Closed source, controlled access.
 
@@ -85,6 +85,25 @@ Weighting, on the other hand, is the process of assigning different levels of im
 For example, if SIFT is found to be more accurate at detecting manipulated images, it may be assigned a higher weight than other algorithms. Conversely, if color histogram analysis is less effective for a particular type of media, it may be assigned a lower weight. In future iterations of AHCE, operators and analysts will be able to assign weights from 0 to 1 according to their needs and use cases. However, in currently available versions of AHCE, this feature is not available.
 
 AHCE compensates for the varying accuracies and grading scales of its constituent algorithms by employing scale normalization and weighting techniques. This ensures that the system can effectively combine the outputs of the different algorithms to make accurate decisions about the presence of CSAM. 
+
+The results of AHCE analyses are graded according to their final weighed score, which is then sorted into several categories. The categories are as follows:
+
+- **90 - 100** - **Definitive Association (X)**
+
+Images are functionally identical—any variation is imperceptible or purely metadata-based. Treat as confirmed duplication.
+
+- **75** - **89**	- **Critical Association (A)**
+
+High-confidence match with minor modifications. Likely altered for obfuscation or compression. Requires immediate investigative review.
+
+- **50** - **74** -	**Substantial Association (P)**
+
+Core structural elements remain intact despite visible modifications. Possible deliberate manipulation. Further analysis required.
+
+- **0** - **49** -	**Negligible Association (L)**
+
+Minimal detectable commonalities. Potentially coincidental resemblance. Low priority for further examination.
+
 
 ### Case Sync
 In development.
