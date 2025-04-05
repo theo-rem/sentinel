@@ -51,29 +51,30 @@ SENTINEL is powered by the following Azure services:
 In development.
 
 ### GOALKEEPER
-In its first iteration, GOALKEEPER is no more than an image similarity detection algorithm (rather, a collection of algorithms). In order to deploy GOALKEEPER in the field, a database must first be available, and we are rapidly working on collecting a sufficient amount of data that would allow for a pre-alpha deployment of GOALKEEPER. 
+In its first iteration, GOALKEEPER was no more than an image similarity detection algorithm of some 3 components with no database, a single operator, and devastatingly low accuracy. Today, GOALKEEPER combines 8 commercially available and 2 in-house algorithms in the hunt for CSAM. In order to deploy newer iterations of GOALKEEPER in the field, a starting dataset was necessary. As of 1/4/2025, GOALKEEPER is working with a dataset of ~450,000 individual cases.
 
 GOALKEEPER implements several image similarity detection algorithms.
 
-- Fourier Transform: This algorithm transforms an image into its constituent frequencies, enabling the detection of patterns and features that might not be visible to the human eye. By analyzing these frequencies, GOALKEEPER can identify similarities and differences between images more effectively.
+- **BAPTISTE** (Fourier Transform): BAPTISTE transforms an image into its constituent frequencies, enabling the detection of patterns and features that might not be visible to the human eye. By analyzing these frequencies, GOALKEEPER can identify similarities and differences between images more effectively.
 
 
-- HOG (Histogram of Oriented Gradients): HOG extracts features from an image by calculating the distribution of gradients in localized portions of the image. This allows GOALKEEPER to create a unique representation of the image's content, which can be used for comparison and matching purposes.
+- **WAYLAND** (Histogram of Oriented Gradients): WAYLAND extracts features from an image by calculating the distribution of gradients in localized portions of the image. This allows GOALKEEPER to create a unique representation of the image's content, which can be used for comparison and matching purposes.
 
 
-- Color Histogram Analysis: This algorithm generates a histogram of the color distribution within an image. By comparing color histograms, GOALKEEPER can determine the similarity between images and identify potential matches, even if the images have been altered or manipulated.
+- **CHALET** (Color Histogram Analysis): CHALET generates a histogram of the color distribution within an image. By comparing color histograms, GOALKEEPER can determine the similarity between images and identify potential matches, even if the images have been altered or manipulated.
 
 
-- Perceptual Hashing: Perceptual hashing generates a compact representation of an image's content, allowing for efficient comparison and matching. This algorithm is particularly useful for detecting similar images, even when they have been modified or subjected to various transformations.
+- **HILDRETH** (Perceptual Hashing): HILDRETH generates a compact representation of an image's content, allowing for efficient comparison and matching. This algorithm is particularly useful for detecting similar images, even when they have been modified or subjected to various transformations.
 
 
-- SSIM (Structural Similarity Index): SSIM measures the structural similarity between two images by comparing their luminance, contrast, and structure. This provides a quantitative measure of image similarity, which GOALKEEPER employs to identify matching or near-matching images.
+- **BOVIK** (Structural Similarity Index): BOVIK measures the structural similarity between two images by comparing their luminance, contrast, and structure. This provides a quantitative measure of image similarity, which GOALKEEPER employs to identify matching or near-matching images.
+  
 
+- **VINYALS** (Multi-Modal Embedding): VINYALS creates a unified representation of different types of data, such as images, text, and audio. By embedding this data into a single space, GOALKEEPER can more effectively compare and analyze multimodal content.
 
-- MME (Multi-Modal Embedding): MME creates a unified representation of different types of data, such as images, text, and audio. By embedding this data into a single space, GOALKEEPER can more effectively compare and analyze multimodal content.
+- **STRONGLOWE** (Scale-Invariant Feature Transform): STRONGLOWE identifies key features within an image that are invariant to scale and rotation. By extracting these features, GOALKEEPER can match images across various transformations in object geometry.
 
-
-- SIFT (Scale-Invariant Feature Transform): SIFT identifies key features within an image that are invariant to scale and rotation. By extracting these features, GOALKEEPER can match images across various transformations in object geometry.
+- **PENTLAND** (Facial Recognition): PENTLAND creates a facial signature and stores the datapoints it collects as hashes, which are then transfered to a seperate DB to be ready to deploy if PENTLAND is invoked by an analyst. PENTLAND is highly susceptible to inaccuracy when deployed on low-quality media, and is reserved for high-definition content with potentially actionable intelligence within.
 
 GOALKEEPER employs scale normalization and weighting techniques to ensure that the algorithms' outputs are comparable and can be effectively combined for accurate detection and identification of target media.
 
@@ -82,7 +83,7 @@ Scale normalization is the process of transforming the output of each algorithm 
 
 Weighting, on the other hand, is the process of assigning different levels of importance to each algorithm's output. This is necessary because some algorithms may be more accurate or relevant for detecting specific types of CSAM. By assigning weights to each algorithm, GOALKEEPER can prioritize the more accurate or relevant algorithms when assisting the analysts with decision-making. 
 
-For example, if SIFT is found to be more accurate at detecting manipulated images, it may be assigned a higher weight than other algorithms. Conversely, if color histogram analysis is less effective for a particular type of media, it may be assigned a lower weight. In future iterations of GOALKEEPER, operators and analysts will be able to assign weights from 0 to 1 according to their needs and use cases. However, in currently available versions of GOALKEEPER, this feature is not available.
+For example, if STRONGLOWE is found to be more accurate at detecting manipulated images, it may be assigned a higher weight than other algorithms. Conversely, if CHALET is less effective for a particular type of media, it may be assigned a lower weight. In newer iterations of GOALKEEPER, operators and analysts are able to assign weights from 0 to 1 according to their needs and use cases.
 
 GOALKEEPER compensates for the varying accuracies and grading scales of its constituent algorithms by employing scale normalization and weighting techniques. This ensures that the system can effectively combine the outputs of the different algorithms to make accurate decisions about the presence of CSAM. 
 
